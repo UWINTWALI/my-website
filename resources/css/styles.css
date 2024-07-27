@@ -1,5 +1,4 @@
 /* GLOBAL */
-
 :root {
     --bg-body: #34495E;
     --bg-body2: hsl(0, 0%, 14%);
@@ -10,15 +9,14 @@
     --invalid: hsl(7, 100%, 68%);
     --bs-font-sans-serif: Lato, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
+
 body {
-    font-family:var(--bs-font-sans-serif);
+    font-family: var(--bs-font-sans-serif);
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     color: var(--text1);
 }
-
-
 
 .bg-less-dark {
     background-color: var(--bg-body2);
@@ -47,9 +45,7 @@ button {
     text-transform: uppercase;
     color: var(--text1);
     text-decoration: none;
-    background-image: linear-gradient(to right,
-            var(--accent) 75%,
-            var(--accent) 75%);
+    background-image: linear-gradient(to right, var(--accent) 75%, var(--accent) 75%);
     background-position: 0 2.1em;
     background-repeat: repeat-x;
     background-size: 8px 2px;
@@ -78,7 +74,8 @@ svg {
     max-width: var(--container);
     margin-inline: auto;
 }
-.container{
+
+.container {
     max-width: 95%;
     display: flex;
     flex-direction: column;
@@ -87,13 +84,11 @@ svg {
 }
 
 .header-container {
-    width:95%;
+    width: 95%;
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
     align-items: center;
     margin: auto;
-    overflow: hidden;
 }
 
 .header-container h3 {
@@ -110,23 +105,28 @@ header {
     align-items: center;
     padding: 1rem;
     position: fixed;
-    top: 0;  /* Ensure it stays at the very top */
-    width: 100%;    /* Full width */
+    top: 0;
+    width: 100%;
     background: var(--bg-body2);
     color: var(--white);
     transition: background-color 0.3s;
-    z-index: 1000;    /* Ensure it stays above other content */
+    z-index: 1000;
+}
+/*  #################### nav menu ######################## */
+
+nav {
+    position: relative;
 }
 
-
 nav ul {
-    padding: 0;
+    display: flex;
     list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 nav ul li {
-    display: inline;
-    margin: 0 1em;
+    margin-left: 1rem;
 }
 
 nav ul li a {
@@ -134,33 +134,111 @@ nav ul li a {
     text-decoration: none;
 }
 
+#mode-toggle {
+    border: none;
+    cursor: pointer;
+}
+
+.hamburger {
+    display: none;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+/* Responsive Styles */
+@media (min-width: 768px) and (max-width: 1024px) {
+    nav ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #333;
+    }
+    #nav-menu{
+        width: 200px;
+        margin: 0 auto;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+        #nav-menu li{
+            margin: 1rem;
+        }
+    #nav-menu li a:hover{
+        font-size: 18px;
+    }
+    
+
+    nav ul.active {
+        display: flex;
+    }
+
+    .hamburger {
+        display: block;
+    }
+        header {
+            flex-direction: column;
+            padding: 0.5rem;
+        }
+    
+        .header-container nav ul {
+            align-items: center;
+        }
+    
+        .header-container h3 {
+            margin: 0.5em 0;
+        }
+    
+        .header-container nav ul li {
+            margin: 0.5em 0;
+        }
+    
+        main {
+            padding: 1em 0;
+        }
+    
+        #section-left {
+            padding: 1rem;
+        }
+    
+        #home .profile-img {
+            width: 10em;
+        }
+    .contact .contact__rings{
+        display: none;
+    }
+
+}
+
+/* ###################End nav menu#################### */
+
 .dark-mode {
-    background-color: var(--bg-body2);    /* Dark mode background color */
-    color: var(--white);    /* Dark mode text color */
-}
-.dark-mode header{
-    background-color:var(--bg-body);
+    background-color: var(--bg-body2);
     color: var(--white);
 }
-.dark-mode #home .socials a{
+
+.dark-mode header {
+    background-color: var(--bg-body);
     color: var(--white);
-    border:1px solid var(--white);
 }
-main{
-    margin-top: 4rem;
-    position: relative;
+
+.dark-mode #home .socials a {
+    color: var(--white);
+    border: 1px solid var(--white);
 }
 
 main {
+    margin-top: 4rem;
+    position: relative;
     padding: 2em 0;
     display: grid;
     grid-template-columns: 1.8fr 2.2fr;
-    /* Make the left side smaller and the right side larger */
     gap: 2rem;
 }
 
-
-/* ###################################             Home           ########################### */
+/* ################################### Home ########################### */
 #home {
     display: flex !important;
     flex-direction: column;
@@ -174,80 +252,40 @@ main {
     position: absolute;
     top: 0;
     right: 0;
-    /* Align the vertical line to the right side */
     width: 2px;
-    /* Adjust the width as needed */
     height: 100%;
-    /* Make it as tall as the #home section */
     background-color: var(--white);
-    /* Adjust the color as needed */
 }
-#home .profile-img{
+
+#home .profile-img {
     width: 20em;
 }
-#home .socials{
+
+#home .socials {
     display: flex;
     flex-direction: row;
     align-items: center;
 }
-#home .socials a{
+
+#home .socials a {
     border: 1px solid var(--bg-body2);
     padding: 4px;
     margin-left: 1rem;
     text-decoration: none;
-    font-size: .8rem;
+    font-size: 0.8rem;
     color: var(--text1);
     border-radius: 4px;
-
 }
-#home .socials i{
+
+#home .socials i {
     padding: 5px;
 }
 
-
-/* 600px */
-@media (min-width: 37.5em) {
-    .wrapper {
-        width: calc(100% - 3.75rem);
-    }
-}
-
 /* UTILITY */
-
 .bottom-border {
     border-bottom: 1px solid var(--text2);
 }
 
-
-@media (min-width: 37.5em) {
-    .header {
-        margin-block-start: 30px;
-        /* margin-block-end: 90px; */
-    }
-
-    .header__nav {
-        justify-content: flex-start;
-        align-items: center;
-        text-align: left;
-        gap: 32px;
-    }
-
-    .header__home {
-        flex: 0 1 auto;
-        margin-inline-end: auto;
-    }
-}
-
-@media (min-width: 62.5em) {
-    .header {
-        margin-block-start: 40px;
-        margin-block-end: 127px;
-    }
-
-    .header__nav {
-        padding-right: 30px;
-    }
-}
 #section-left {
     display: flex;
     flex-direction: column;
@@ -255,23 +293,23 @@ main {
     align-items: flex-start;
     padding: 2rem;
 }
-#projects a{
+
+#projects a {
     color: var(--text3);
     font-size: 1rem;
     font-weight: 700;
 }
 
 /* CONTACT */
-
 .contact {
     position: relative;
+    padding: 4rem;
     color: var(--text2);
 }
 
 .contact__wrapper {
     padding-block: 84px;
 }
-
 
 .contact__control {
     position: relative;
@@ -342,13 +380,153 @@ main {
     translate: -75%;
 }
 
-@media (min-width: 37.5em) {
-    .contact__rings {
-        bottom: 47px;
-        translate: -75%;
+#footer {
+    background-color: var(--bg-body2);
+    color: var(--white);
+    text-align: center;
+    padding: 1rem 0;
+    position: relative;
+}
+
+.footer-text {
+    font-family: 'Arial', sans-serif;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.footer-text i {
+    color: red;
+}
+
+/* MEDIA QUERIES */
+@media (max-width: 1024px) {
+    .header-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .header-container nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .header-container nav ul li {
+        margin: 0.5em 0;
+    }
+
+    main {
+        grid-template-columns: 1fr;
+    }
+
+    #home .profile-img {
+        width: 15em;
     }
 }
 
+
+@media (max-width: 768px){
+nav ul {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+}
+
+#nav-menu {
+    width: 200px;
+    margin: 0 auto;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+#nav-menu li {
+    margin: 1rem;
+}
+
+#nav-menu li a:hover {
+    font-size: 18px;
+}
+
+
+nav ul.active {
+    display: flex;
+}
+
+.hamburger {
+    display: block;
+}
+ #home i {
+     display: none;
+ }
+
+}
+@media (max-width: 480px) {
+    
+    .header-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .header-container nav ul {
+        align-items: center;
+    }
+
+    .header-container nav ul li {
+        margin: 0.5em 0;
+    }
+
+    .header-container h3 {
+        margin: 0.5em 0;
+        text-align: center;
+    }
+    
+
+    main {
+        padding: 0.5em 0;
+    }
+
+    #home .profile-img {
+        width: 8em;
+    }
+    .contact__wrapper {
+        padding-block: 42px;
+    }
+
+    .contact__control {
+        margin-block-end: 8px;
+    }
+
+    .contact__control input,
+    .contact__control textarea {
+        padding-block: 8px;
+        padding-inline: 12px;
+        font-size: 0.875rem;
+    }
+
+    .contact__control textarea {
+        margin-block-end: 16px;
+    }
+
+    .contact__control button {
+        font-size: 0.875rem;
+    }
+    .contact .contact__rings {
+        display: none;
+    }
+
+    #footer {
+        width: 100%;
+        padding: 0.5rem 0;
+    }
+
+    .footer-text {
+        font-size: 0.75rem;
+    }
+}
 @media (min-width: 62.5em) {
     .contact__wrapper {
         display: grid;
@@ -365,43 +543,4 @@ main {
     }
 }
 
-/* 999.98px */
-@media (max-width: 62.49875em) {
-    .contact__wrapper {
-        max-width: 27.8rem;
-    }
 
-    .contact__text {
-        text-align: center;
-    }
-}
-
-#footer {
-    background-color: var(--bg-body2);    /* Dark background color */
-    color: var(--white);    /* White text color */
-    text-align: center;    /* Center the text */
-    padding: 1rem 0;    /* Vertical padding */
-    position: relative;    /* For positioning the pseudo-element */
-}
-
-.footer-text {
-    font-family: 'Arial', sans-serif;
-    font-size: 0.9rem;
-    margin: 0;
-}
-
-.footer-text i {
-    color: red;    /* Color for the heart icon */
-}
-
-@media (min-width: 37.5em) {
-    footer {
-        padding-block: 30px 40px;
-    }
-}
-
-@media (min-width: 62.5em) {
-    footer {
-        padding-block: 47px 92px;
-    }
-}
