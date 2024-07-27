@@ -4,13 +4,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
     modeToggleBtn.addEventListener('click', function() {
         document.body.classList.toggle('dark-mode');
+        
+        const isDarkMode = document.body.classList.contains('dark-mode');
+        modeIcon.src = `resources/images/change_mode/${isDarkMode ? 'dark' : 'light'}-mode.svg`;
+        modeIcon.alt = `${isDarkMode ? 'Dark' : 'Light'} Mode`;
+    });
+    // humerbuger icon
+    const hamburger = document.getElementById("hamburger");
+    const navMenu = document.getElementById("nav-menu");
 
-        if (document.body.classList.contains('dark-mode')) {
-            modeIcon.src = 'resources/images/change_mode/dark-mode.svg';
-            modeIcon.alt = 'Dark Mode';
-        } else {
-            modeIcon.src = 'resources/images/change_mode/light-mode.svg';
-            modeIcon.alt = 'Light Mode';
-        }
+    hamburger.addEventListener("click", () => {
+        navMenu.classList.toggle("active");
     });
 });
