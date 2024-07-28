@@ -16,4 +16,15 @@ document.addEventListener('DOMContentLoaded', function() {
     hamburger.addEventListener("click", () => {
         navMenu.classList.toggle("active");
     });
+
+   // Close the menu when clicking outside of it
+    document.addEventListener("click", (event) => {
+        const isClickInsideMenu = navMenu.contains(event.target);
+        const isClickOnHamburger = hamburger.contains(event.target);
+
+        if (!isClickInsideMenu && !isClickOnHamburger) {
+            navMenu.classList.remove("active");
+        }
+    }); 
+    
 });
